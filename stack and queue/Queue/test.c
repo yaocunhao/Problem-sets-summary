@@ -1,36 +1,35 @@
-#include "queue.h"
+#include"queue.h"
 
-void test1()
+void test()
 {
 	Queue q;
 	QueueInit(&q);
-	Queuepush(&q, 1);
-	Queuepush(&q, 2);
-	Queuepush(&q, 3);
-	Queuepush(&q, 4);
+	QueuePush(&q, 1);
+	QueuePush(&q, 2);
+	QueuePush(&q, 3);
+	QueuePush(&q, 4);
+	while (!QueueEmpty(&q))
+	{
+		printf("%d\n", QueueFront(&q));
+		QueuePop(&q);
+	}
+	QueuePush(&q, 5);
+	QueuePush(&q, 6);
+	QueuePush(&q, 7);
+	QueuePush(&q, 8);
+	printf("%d\n", QueueBack(&q));
 	printf("%d\n", QueueSize(&q));
-	//QueueEmpty(&q);
-	QueuePop(&q);
-	QueuePop(&q);
-	QueuePop(&q);
-	printf("%d\n", QueueSize(&q));
-	QueuePop(&q);
-	QueuePop(&q);
-	int c=QueueEmpty(&q);
-	if (c)
-		printf("Á´±íÎª¿Õ\n");
-	int ret=QueueFront(&q);
-	int num = QueueBack(&q);
-
+	QueueDestory(&q);
 
 }
 
 
+
+
+
 int main()
 {
-	test1();
-
-	printf("dd\n");
+	test();
 	system("pause");
 	return 0;
 }

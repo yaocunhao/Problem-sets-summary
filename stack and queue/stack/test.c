@@ -1,27 +1,28 @@
-#include "statck.h"
+#include"stack.h"
 
 void test1()
 {
-	statck s;
-	stackInit(&s);
-	stackpush(&s, 1);
-	stackpush(&s, 2);
-	stackpush(&s, 3);
-	stackpush(&s, 4);
-	stackpush(&s, 5);
-	stackpush(&s, 6);
-	stackPop(&s);
-	stackPop(&s);
-	stackPop(&s);
-	//printf("%d\n", statckTop(&s)); 
-	///printf("%d\n", statckSize(&s));
+	stack p;
+	StackInit(&p);
+	StackPush(&p, 1);
+	StackPush(&p, 2);
+	StackPush(&p, 3);
+	StackPush(&p, 4);
+	while (!StackEmpty(&p))
+	{
+		printf("%d\n", StackTop(&p));
+		printf("size:%d\n", StackSize(&p));
+		StackPop(&p);
+		
+	}
 
-	stackPop(&s);
-	stackPop(&s);
-	if (stackEmpty(&s))
-		printf("weikong\n");
-	stackDestroy(&s);
-	//stackpush(&s, 1);
+	if (StackEmpty(&p))
+		printf("Îª¿Õ\n");
+	else
+		printf("²»Îª¿Õ\n");
+	
+	StackDestory(&p);
+
 
 
 
@@ -29,9 +30,11 @@ void test1()
 }
 
 
+
 int main()
 {
 	test1();
 	system("pause");
 	return 0;
+
 }

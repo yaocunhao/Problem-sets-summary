@@ -3,32 +3,33 @@
 
 #include <stdio.h>
 #include <windows.h>
+#include <assert.h>
 
-typedef int DataType;
+typedef int QDataType;
 
-
-typedef struct QListNode//队列节点
+typedef struct QListNode
 {
-	struct QListNode *next;
-	DataType data;
+	QDataType _data;
+	struct QListNode* _next;
+}QNode;
 
-} QNode;
-
-typedef struct Queue//队列指针
+typedef struct Queue
 {
-	QNode *front;
-	QNode *rear;
+	QNode *_front;
+	QNode *_rear;
 }Queue;
 
-void QueueInit(Queue *q);//初始化队列
-QNode *CreatNode(DataType data);
-void Queuepush(Queue *q, DataType data);//入队
+void QueueInit(Queue *q);//初始化
+void QueueDestory(Queue *q);//销毁
+void QueuePush(Queue *q,QDataType data);//入队
 void QueuePop(Queue *q);//出队
-DataType QueueFront(Queue *q);//获得队列头部元素
-DataType QueueBack(Queue *q);//获取队列尾部元素
-int QueueSize(Queue *q);//获取队列中有效元素的个数
-int QueueEmpty(Queue *q);//判断队列是否为空
-void QueueDestroy(Queue *q);//销毁队列
+QDataType QueueFront(Queue *q);//获取队首元素
+QDataType QueueBack(Queue *q);//获取队尾元素
+int QueueSize(Queue *q);//获取元素个数
+int QueueEmpty(Queue *q);//判断是否为空
+
+
+
 
 
 
