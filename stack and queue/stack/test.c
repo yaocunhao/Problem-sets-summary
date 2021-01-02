@@ -13,23 +13,16 @@ void test1()
 		printf("%d\n", StackTop(&p));
 		printf("size:%d\n", StackSize(&p));
 		StackPop(&p);
-		
+
 	}
 
 	if (StackEmpty(&p))
 		printf("Îª¿Õ\n");
 	else
 		printf("²»Îª¿Õ\n");
-	
+
 	StackDestory(&p);
-
-
-
-
-
 }
-
-
 
 int main()
 {
