@@ -23,7 +23,7 @@ void QueuePush(Queue *q, QDataType data)//入队
 {
 	QNode *node = (QNode*)malloc(sizeof(QNode));
 	assert(node);
-	
+
 	node->_data = data;
 	node->_next = NULL;
 
@@ -42,7 +42,7 @@ void QueuePop(Queue *q)//出队
 {
 	assert(q);
 	assert(q->_front);
-	
+
 	QNode *next = q->_front->_next;
 	free(q->_front);
 	q->_front = next;
