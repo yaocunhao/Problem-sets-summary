@@ -5,8 +5,6 @@
 #include <windows.h>
 #include <stdlib.h>
 
-
-
 typedef char BTDataType;
 
 typedef struct BinaryTreeNode
@@ -27,7 +25,5 @@ void *BinaryTreeInOrder(BTNode *root);//二叉树中序遍历
 void *BinaryTreePostOrder(BTNode *root);//二叉树后序遍历
 void BinaryTreeLevelOrder(BTNode *root);//层序遍历
 int  BinaryTreeComplete(BTNode *root);//判断二叉树是否完全二叉树
-
-
 
 #endif
