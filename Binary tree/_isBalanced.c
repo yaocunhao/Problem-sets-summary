@@ -27,5 +27,6 @@ bool _isBalanced(struct TreeNode *root, int *depth)
 
 bool isBalanced(struct TreeNode* root){
 	int depth = 0;
+
 	return _isBalanced(root, &depth);
 }
