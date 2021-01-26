@@ -310,6 +310,7 @@ void QuickSortNoRSt(int *arr, int begin, int end)//非递归,利用栈
 			StackPush(&st, begin);
 		}
 	}
+	StackDestory(&st);
 }
 
 void QuickSortNoRQe(int *arr, int begin, int end)//利用栈实现快排
@@ -345,4 +346,54 @@ void QuickSortNoRQe(int *arr, int begin, int end)//利用栈实现快排
 		}
 
 	}
+	QueueDestory(&q);
+}
+
+void Merge(int *arr, int begin, int mid, int end, int *temp)
+{
+	//划分为两个区间
+	int begin1 = begin;
+	int end1 = mid;
+	int begin2 = mid + 1;
+	int end2 = end;
+	int sub = begin;
+
+	while (begin1 <= end1&&begin2 <= end2)//两个数组中，较小的元素放入新辅助空间之中
+	{
+		if (arr[begin1] < arr[begin2])
+			temp[sub++] = arr[begin1++];
+		else
+			temp[sub++] = arr[begin2++];
+	}
+	//检查区间之中是否还有剩余的元素
+	if (begin1 <= end1)
+		memcpy(temp + sub, arr + begin1, sizeof(int)*(end1 - begin1 + 1));
+	if (begin2 <= end2)
+		memcpy(temp + sub, arr + begin2, sizeof(int)*(end2 - begin2 + 1));
+
+	//拷贝回原来的空间
+	memcpy(arr + begin, temp + begin, sizeof(int)*(end - begin + 1));
+}
+
+
+
+void MergeR(int *arr, int begin, int end, int *temp)
+{
+	if (begin >= end)
+		return;
+	//将区间分解为单个元素的区间，单个元素的区间天然有序
+	int mid = begin + (end - begin) / 2;
+	MergeR(arr, begin, mid, temp);
+	MergeR(arr, mid + 1, end, temp);
+
+	//进行合并，从下往上，进行合并有序序列
+	Merge(arr, begin, mid, end, temp);
+}
+
+void MergeSort(int *arr, int begin, int end, int size)
+{
+	int *temp = (int *)malloc(sizeof(int)*size);
+	MergeR(arr, begin, end, temp);
+	memcpy(arr, temp, sizeof(int)*size);//将排好序的数组拷贝回来
+	free(temp);
 }
