@@ -30,4 +30,8 @@ void QuickSortNoRQe(int *arr, int begin, int end);//非递归，利用队列实现快排
 void Merge(int *arr, int begin, int mid, int end, int *temp);//合并
 void MergeR(int *arr, int begin, int end, int *temp);//递归
 void MergeSort(int *arr, int begin, int end, int size);//归并排序
+void _Merge(int *arr, int begin1, int end1, int begin2, int end2, int *temp);//非递归合并
+void MergeSortNoR(int *arr, int size);//归并非递归
+
+void CountSort(int *arr, int size);//计数排序
 #endif 

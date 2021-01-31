@@ -20,6 +20,8 @@ void  test()
 	int *arr7 = (int *)malloc(sizeof(int)*size);
 	int *arr8 = (int *)malloc(sizeof(int)*size);
 	int *arr9 = (int *)malloc(sizeof(int)*size);
+	int *arr10 = (int *)malloc(sizeof(int)*size);
+	int *arr11 = (int *)malloc(sizeof(int)*size);
 
 
 	memcpy(arr1, arr, sizeof(int)*size);
@@ -31,6 +33,9 @@ void  test()
 	memcpy(arr7, arr, sizeof(int)*size);
 	memcpy(arr8, arr, sizeof(int)*size);
 	memcpy(arr9, arr, sizeof(int)*size);
+	memcpy(arr10, arr, sizeof(int)*size);
+	memcpy(arr11, arr, sizeof(int)*size);
+
 
 	int begin = clock();
 	InsertSort(arr1, size);
@@ -73,19 +78,31 @@ void  test()
 	QuickSortNoRSt(arr7, 0, size - 1);
 	end = clock();
 	printf("QuickNorSt :%d\n\n", end - begin);
-	Print(arr7, size);
+	//Print(arr7, size);
 
 	begin = clock();
 	QuickSortNoRQe(arr8, 0, size - 1);
 	end = clock();
 	printf("QuickNorQe :%d\n\n", end - begin);
-	Print(arr8, size);
+	//Print(arr8, size);
 
 	begin = clock();
 	MergeSort(arr9, 0, size - 1, size);
 	end = clock();
 	printf("Merge :%d\n\n", end - begin);
-	Print(arr9, size);
+	//Print(arr9, size);
+
+	begin = clock();
+	MergeSortNoR(arr10, size);
+	end = clock();
+	printf("MergeNoR :%d\n\n", end - begin);
+	//Print(arr10, size);
+
+	begin = clock();
+	CountSort(arr11, size);
+	end = clock();
+	printf("CountSore :%d\n\n", end - begin);
+	//Print(arr11, size);
 }
 
 
