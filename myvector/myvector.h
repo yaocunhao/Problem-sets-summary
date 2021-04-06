@@ -129,15 +129,15 @@ namespace mv
 		{
 			if (n > capacity())
 			{
-				 iterator temp = new T[n];
+				iterator temp = new T[n];
 				size_t old_size = size();//大小临时记录一下
 
 				iterator begin_start = _start;
-				iterator begin_temp=temp;
+				iterator begin_temp = temp;
 
 				while (begin_start != _finish)
 				{
-					*begin_temp= *begin_start;//深拷贝一份
+					*begin_temp = *begin_start;//深拷贝一份
 					//往后挪动
 					begin_start++;
 					begin_temp++;
@@ -146,10 +146,10 @@ namespace mv
 				delete[] _start;//释放原来的空间
 				_start = temp;//指向新的空间
 				temp = nullptr;//防止析构自定义类型
-				
+
 				_finish = _start + old_size;//不直接使用size是因为防止迭代器失效
 				_end_of_storge = _start + n;
-				
+
 			}
 		}
 
@@ -175,7 +175,7 @@ namespace mv
 			_finish--;
 		}
 
-		void resize(size_t newsize, const T &x=T())//调用匿名对象，具有常性，需要加上const
+		void resize(size_t newsize, const T &x = T())//调用匿名对象，具有常性，需要加上const
 		{
 			if (newsize>capacity())
 			{
@@ -213,7 +213,7 @@ namespace mv
 			*pos = x;
 			_finish++;
 
-			return pos;
+			return pos;//结局和迭代器失效问题
 		}
 
 		void Print()
@@ -225,6 +225,22 @@ namespace mv
 				start++;
 			}
 			cout << endl;
+		}
+
+		iterator erase(iterator pos)
+		{
+			assert(pos >= _start&&pos < _finish);
+
+			iterator temp_pos = pos;
+
+			while (pos < _finish - 1)
+			{
+				*pos = *(pos + 1);
+				pos++;
+			}
+			_finish--;
+
+			return temp_pos;
 		}
 
 	private:
